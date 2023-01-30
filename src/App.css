@@ -167,6 +167,12 @@
 }
 
 /* screen of wait */
+
+.content-login, .content-purchase, .content-details 
+{
+  margin-top: 15%;
+}
+
 .loading{
   display: flex;
   justify-content: center;
