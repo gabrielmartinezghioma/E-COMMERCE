@@ -12,7 +12,7 @@ const NavBa = () => {
     
       <Navbar className='navbar-all' bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand className='navbar-title' as={Link} to="/">E-commerce <i class='bx bxs-shopping-bags navbar-bags'></i></Navbar.Brand>
+          <Navbar.Brand className='navbar-title' as={Link} to="/">E-commerce <i className='bx bxs-shopping-bags navbar-bags'></i></Navbar.Brand>
         </Container>
           <Nav className="me-auto content-detail-navbar">
             <section className='link-login'  >

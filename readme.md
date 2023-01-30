@@ -35,6 +35,10 @@ GABRIEL 27-01-23
 
     Definicion de root ( colors).
 
+Joyner 30-1-2023
+
+    falta footer, espero cambio de los demas para terminar...
+
 
 -----------------------------------------------------------------------------------------------------------
 
