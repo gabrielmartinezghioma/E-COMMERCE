@@ -13,7 +13,7 @@ const Login = () => {
 
   useEffect(() => {
     if(user && token){
-      navigate('/')
+      navigate('/login')
     } 
   }, [])
 

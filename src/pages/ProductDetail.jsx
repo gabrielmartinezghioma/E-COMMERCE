@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { setIsLoading } from '../store/slices/isLoading.slice';
 import Carousel from 'react-bootstrap/Carousel';
@@ -11,6 +11,7 @@ import Card from 'react-bootstrap/Card';
 // thunk
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsThunk } from '../store/slices/products.slice';
+import { thunkCartPost } from '../store/slices/cart.slice'
 
 
 const ProductDetail = () => {
@@ -57,21 +58,21 @@ const ProductDetail = () => {
   const similarItems = productRelated?.filter((element) => element?.category?.name === detail?.category);
 
   const [input, setInput] = useState(1);
-
+  const dispatchPostCart = useDispatch();
+  const navigate = useNavigate()
 
   const handleSubmit = () => {
 
-    const data = {
-      id,
-      quantity: input
+    if(localStorage.getItem('token')){
+      const data = {
+        id,
+        quantity: input
+      } 
+        dispatchPostCart(thunkCartPost(data))
+    
+    }else{
+      navigate('/login')
     }
-
-    axios
-      .post('https://e-commerce-api.academlo.tech/api/v1/cart', data)
-      .then((resp)=>console.log(resp))
-      .catch((error)=>console.log(error))
-
-    console.log(data);
   }
 
 
