@@ -16,13 +16,13 @@ const NavBa = () => {
         </Container>
           <Nav className="me-auto content-detail-navbar">
             <section className='link-login'  >
-               <Nav.Link as={Link} to="/login" className='login-navbar' ><i class='bx bx-user icon-user-navbar'></i></Nav.Link>
+               <Nav.Link as={Link} to="/login" className='login-navbar' ><i className='bx bx-user icon-user-navbar'></i></Nav.Link>
             </section>
             <section className='link-purchase'>
               <Nav.Link className='purchase-navbar' as={Link}  to="/purchase"  >Favoritos</Nav.Link>
             </section>
             <section className='link-car' > 
-              <Nav.Link className='car-navbar' as={Link} to="/" ><i class='bx bxs-cart icon-car-navbar'></i></Nav.Link>
+              <Nav.Link className='car-navbar' as={Link} to="/" ><i className='bx bxs-cart icon-car-navbar'></i></Nav.Link>
             </section>
           
           </Nav>
