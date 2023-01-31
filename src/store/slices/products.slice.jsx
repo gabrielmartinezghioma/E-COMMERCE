@@ -32,11 +32,17 @@ export const productSlice = createSlice({
  }
  export const getFilterProducts =(e) =>  (dispatch) => {
 
-  
-
   axios
   .get(`https://e-commerce-api.academlo.tech/api/v1/products`)
   .then(resp => dispatch(setProduct(resp.data.data.products.filter(product => product.title.toLowerCase().includes(e)))))
+  .catch(error => console.log(error))
+  
+ }
+ export const getFilterPrice =(data) =>  (dispatch) => {
+  
+  axios
+  .get(`https://e-commerce-api.academlo.tech/api/v1/products`)
+  .then(resp => dispatch(setProduct(resp.data.data.products.filter(product => (parseInt(product.price)) >= data.priceOne && (parseInt(product.price) <= data.priceTwo)))))
   .catch(error => console.log(error))
   
  }
