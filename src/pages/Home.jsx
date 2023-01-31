@@ -47,8 +47,7 @@ const Home = () => {
             className="me-2"
             aria-label="Search"
             style={{heigth: '40px', width: '60vw'}}
-          />
-          
+          />       
         </Form>
       </Col>
 
@@ -75,13 +74,13 @@ const Home = () => {
       </Button>
         </Accordion.Body>
       </Accordion.Item>
-      
     </Accordion> 
       </Col>
 {/* Listado completo de los productos */}
+
   {
     products.map((product, index) => (
-        <Col key={index} >
+        <Col className='product' key={index} as={ Link } to = {`/products/${product.id}`}>
         <Card className='Card' style={{height: '500px', width:'280px'}}>
           <div className='homeImage'>
         <Card.Img className='over'          
