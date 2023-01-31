@@ -7,6 +7,7 @@ import NavBa from './components/NavBar'
 import Container from 'react-bootstrap/Container';
 import Loader from './components/Loader'
 import { useSelector } from 'react-redux'
+import Register from './pages/Register'
 
 import './App.css'
 
@@ -40,6 +41,10 @@ function App() {
           <Route 
           path='/purchase'
           element={<Purchases/>}
+          />
+          <Route 
+          path='/register'
+          element={<Register/>}
           />
 
         </Routes>
