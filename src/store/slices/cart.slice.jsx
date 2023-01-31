@@ -20,7 +20,7 @@ export const thunkCartGet = () => (dispatch) => {
   return axios
     .get('https://e-commerce-api.academlo.tech/api/v1/cart', {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     })
     .then((resp) => dispatch(setCart(resp.data.data))) //ver con cuidado la respuesta

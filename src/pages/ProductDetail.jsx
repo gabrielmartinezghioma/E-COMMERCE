@@ -65,7 +65,7 @@ const ProductDetail = () => {
 
     if(localStorage.getItem('token')){
       const data = {
-        id,
+       id : Number(id),
         quantity: input
       } 
         dispatchPostCart(thunkCartPost(data))
