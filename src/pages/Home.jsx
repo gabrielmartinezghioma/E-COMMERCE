@@ -108,8 +108,8 @@ const Home = () => {
 {/* Listado completo de los productos */}
 
   {
-    products.map((product, index) => (
-      <Col className='product d-flex' key={index} as={ Link } to = {`/products/${product.id}`}>
+    products.map((product, index) => ( 
+      <Col className='product d-flex' key={index} as={ Link } to={`/products/${product.id}`}>
         <Card className='Card' style={{height: '500px', width:'280px'}}>
           <div className='homeImage'>
             <Card.Img className='over'          
@@ -129,10 +129,6 @@ const Home = () => {
               <Card.Text className='price'> <span>Price: </span> </Card.Text>
               <Card.Text className='amount'>{product.price}</Card.Text>
             </div> 
-            <Link to={'/purchase'} ><Button className='btn-shopping' variant="primary">
-                  <i className="fa-solid fa-cart-shopping"></i>
-            </Button>
-            </Link>
           </Card.Body>
         </Card>
       </Col>
