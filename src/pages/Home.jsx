@@ -89,6 +89,7 @@ const Home = () => {
           {categorie.map((category, index) => (
           <Col key={index}>
           <Button
+            style={{fontWeight: "normal"}}
             variant="ligth"
             onClick={() => dispatch(filterCategoriesThunk(category.id))}>
             {category.name}
@@ -96,6 +97,7 @@ const Home = () => {
           </Col>
         ))}
         <Button 
+            style={{fontWeight: "normal"}}
             variant="ligth" 
             onClick={() => dispatch(getProductsThunk())}>All Products
         </Button>
@@ -129,10 +131,6 @@ const Home = () => {
                       <Card.Text className='price'> <span>Price: </span> </Card.Text>
                       <Card.Text className='amount'>{product.price}</Card.Text>
                     </div> 
-                    <Link to={'/purchase'} ><Button className='btn-shopping' variant="primary">
-                          <i className="fa-solid fa-cart-shopping"></i>
-                    </Button>
-                    </Link>
                   </Card.Body>
                 </Card>
               </Col>
