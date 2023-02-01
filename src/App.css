@@ -1,6 +1,7 @@
 /* navbar */
 
 .navbar-all{
+  background-color: black;
   z-index: 90;
   top: 0;
   position:fixed;
@@ -121,6 +122,13 @@
   border-right: 1px solid white;
   text-decoration: none;
 }
+.purchase-icon{
+  color: var(--secondary--color);
+  font-size: 24px;
+}
+.purchase-icon:hover{
+  color:lightgray;
+}
 @keyframes fallPurchase{
   0%{
     top: 0;
@@ -167,6 +175,30 @@
     top: 0;
   }
 }
+.section-navbar{
+  width: 100%;
+  height: 30px;
+}
+
+/* Error 404 */
+.error-all{
+  position: relative;
+  z-index: 99;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.error-content{
+  height: 200px;
+  width: 450px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /* HOME */
 .content-home {
@@ -180,6 +212,17 @@
 }
 .search form {
   width: 75%;
+}
+.form-search-home{
+  display: flex;
+  flex-direction: row;
+}
+.search-button{
+  margin-left: 0
+}
+.search-icon{
+  font-size: 25px;
+  color: grey;
 }
 .filtersPrice {
     width: 250px;
@@ -443,15 +486,16 @@
 {
   margin-top: 15%;
 }
-
+/* don't use Z-index that have a value more to 99 */
 .loading{
   display: flex;
   justify-content: center;
+  top: 0;
   width: 100%;
   height: 100%;
   position: fixed;
   background:linear-gradient(#FFFFFF, grey) ;
-  z-index: 3;
+  z-index: 99;
 }
 
 .shopping-car{

@@ -24,7 +24,7 @@ const NavBa = () => {
 
   return (
       <>
-      <Navbar className='navbar-all' bg="dark" variant="dark">
+      <Navbar className='navbar-all'  variant="dark">
         <Container>
           <Navbar.Brand className='navbar-title' as={ Link } to="/">E-commerce <i className='bx bxs-shopping-bags navbar-bags'></i></Navbar.Brand>
         </Container>
@@ -36,7 +36,7 @@ const NavBa = () => {
                
             </section>
             <section className='link-purchase'>
-              <Nav.Link className='purchase-navbar' as={Link}  to="/purchase"  >Purchases</Nav.Link>
+              <Nav.Link className='purchase-navbar' as={Link}  to="/purchase"  ><i className="fa-solid fa-box-archive purchase-icon"></i></Nav.Link>
             </section>
             <section className='link-car' > 
               <Nav.Link  className='car-navbar' onClick={handleShow} ><i className='bx bxs-cart icon-car-navbar'></i></Nav.Link>
@@ -48,6 +48,11 @@ const NavBa = () => {
           }
       </Navbar>
       <Cart show={show} handleClose={handleClose} ></Cart>
+
+            <section className='section-navbar'>
+
+            </section>
+
       </>
   )
 }

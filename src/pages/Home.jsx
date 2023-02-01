@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getProductsThunk, filterCategoriesThunk, getFilterProducts, getFilterPrice } from '../store/slices/products.slice';
 import {Row, Col, Button, Card} from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
@@ -10,7 +10,6 @@ import { setIsLoading } from '../store/slices/isLoading.slice';
 import { useForm } from "react-hook-form";
 
 const Home = () => {
-
     const dispatch = useDispatch()
     const products = useSelector(state => state.product)
     const [categorie, setCategorie] =useState([])
@@ -18,10 +17,15 @@ const Home = () => {
       
     useEffect(() => {
 
+
       axios
       .get(`https://e-commerce-api.academlo.tech/api/v1/products/categories`)
       .then(resp => setCategorie(resp.data.data.categories))
-      .catch(error => console.log(error))
+      .catch(error =>{
+        console.log(error);
+      }
+
+      )
       .finally(() => {
         setTimeout(() => {
           dispatch(setIsLoading(false))
@@ -30,6 +34,7 @@ const Home = () => {
       dispatch(getProductsThunk())
       
     },[])
+
     const searchProduct = (e) => {
         dispatch(getFilterProducts(e))
     }
@@ -42,15 +47,22 @@ const Home = () => {
       <h1>Home</h1>
 {/* Search */}
       <Col className="search">
-          <Form 
+          <Form className='form-search-home'
           onSubmit={ (e) => searchProduct(e.target[0].value)}>
             <Form.Control
-              onChange={(e) => searchProduct(e.target.value)}
+              // onChange={(e) => searchProduct(e.target.value)}
               type="search"
               placeholder="What are you looking for?"
               className="me-2"
               aria-label="Search"
-            />       
+            />   
+             <Button variant="outline-secondary" id="button-addon2 "
+             className='search-button'
+             type='submit'
+             >
+             <i className="fa-solid fa-magnifying-glass search-icon"></i>
+        </Button>
+            {/* <button type='submit'>Click</button>     */}
           </Form>
       </Col>
 
