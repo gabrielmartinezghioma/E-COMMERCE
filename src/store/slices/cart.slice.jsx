@@ -13,20 +13,44 @@ export const cartProducts = createSlice({
   }
 })
 
+// export const thunkCartGet = () => (dispatch) => {
+//   dispatch(setIsLoading(true));
+//   return axios
+//     .get('https://e-commerce-api.academlo.tech/api/v1/cart', {
+//       headers: {
+//         Authorization: `Bearer ${localStorage.getItem("token")}`
+//       }
+//     })
+//     .then((resp) => dispatch(setCart(resp.data.data.cart.products))) //ver con cuidado la respuesta
+//     .catch((resp) => console.log(resp))
+//     .finally(() => dispatch(setIsLoading(false)));
+// }
 
 
-export const thunkCartGet = () => (dispatch) => {
-  dispatch(setIsLoading(true));
-  return axios
-    .get('https://e-commerce-api.academlo.tech/api/v1/cart', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    })
-    .then((resp) => dispatch(setCart(resp.data.data.cart.products))) //ver con cuidado la respuesta
-    .catch((resp) => console.log(resp))
-    .finally(() => dispatch(setIsLoading(false)));
+
+export const thunkCartGet = () => async (dispatch) => {
+  try {
+    const response = await axios
+      .get('https://e-commerce-api.academlo.tech/api/v1/cart', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      })
+
+    if (response.status === 200) {
+      dispatch(setCart(response.data.data.cart.products))
+    }
+  } catch (response) {
+    if (response.status === 404) {
+      dispatch(setCart([]))
+    } else {
+
+      console.error(response)
+    }
+  }
 }
+
+
 
 
 export const thunkCartPost = (body) => (dispatch) => {
@@ -37,7 +61,7 @@ export const thunkCartPost = (body) => (dispatch) => {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
-    .then(() => dispatch(thunkCartPost()))
+    .then(() => dispatch(thunkCartGet()))
     // .then((resp)=>console.log(resp))
     .catch((resp) => console.log(resp))
     .finally(() => dispatch(setIsLoading(false)));

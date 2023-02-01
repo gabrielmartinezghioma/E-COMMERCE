@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Loader from './components/Loader'
 import { useSelector } from 'react-redux'
 import Register from './pages/Register'
+import Footer from './components/Footer'
 
 import './App.css'
 
@@ -23,8 +24,9 @@ function App() {
       <NavBa />
       <Container className='my-5'>
 
-
         <Routes>
+
+
 
           <Route
             path='/'
@@ -50,6 +52,9 @@ function App() {
         </Routes>
 
       </Container>
+
+
+      <Footer />
 
 
     </HashRouter>
