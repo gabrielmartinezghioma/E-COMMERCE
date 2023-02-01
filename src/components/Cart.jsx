@@ -13,7 +13,7 @@ const Cart = ({ show, handleClose })=> {
 
     useEffect(() => {
       dispatch(thunkCartGet())
-    }, [])
+    }, [show])
 
     return(
         <Offcanvas show={show} onHide={handleClose} placement={"end"}>
