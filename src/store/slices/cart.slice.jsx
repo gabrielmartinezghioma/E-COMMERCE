@@ -23,7 +23,7 @@ export const thunkCartGet = () => (dispatch) => {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     })
-    .then((resp) => dispatch(setCart(resp.data.data))) //ver con cuidado la respuesta
+    .then((resp) => dispatch(setCart(resp.data.data.cart.products))) //ver con cuidado la respuesta
     .catch((resp) => console.log(resp))
     .finally(() => dispatch(setIsLoading(false)));
 }
