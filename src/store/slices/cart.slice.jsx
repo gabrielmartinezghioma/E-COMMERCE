@@ -6,14 +6,12 @@ export const cartProducts = createSlice({
   name: 'cart',
   initialState: [],
   reducers: {
-    setCart: (state, action) => {
+    setCart: (state, action) => {      
       return action.payload
     }
 
   }
 })
-
-
 
 export const thunkCartGet = () => (dispatch) => {
   dispatch(setIsLoading(true));

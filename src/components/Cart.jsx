@@ -3,17 +3,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { thunkCartGet } from '../store/slices/cart.slice'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { setCart } from '../store/slices/cart.slice'
+import { useNavigate } from 'react-router-dom'
 
 const Cart = ({ show, handleClose })=> {
   
     const dispatch = useDispatch()
     const cart = useSelector(state =>state.cart)
-    const [render, setRender] = useState(false)
+   
+
 
     useEffect(() => {
-      dispatch(thunkCartGet())
-    }, [show, render])
-
+        dispatch(thunkCartGet())
+      }, [show])
+  
+   
     const deleteCart = ()=>{
         cart.map((element)=>{
             axios.delete(`https://e-commerce-api.academlo.tech/api/v1/cart/${element.id}`, {
@@ -21,10 +25,15 @@ const Cart = ({ show, handleClose })=> {
                   Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
               })
-            .then(()=> setRender(!render))
+              .then( ()=> dispatchGet(setCart([])))
             .catch(error => console.log(error) )
         })
     }
+
+    const dispatchGet = useDispatch();
+
+    const navigate = useNavigate()
+
     const checkout = (purchases)=>{
         axios
             .post('https://e-commerce-api.academlo.tech/api/v1/purchases', purchases, {
@@ -32,9 +41,8 @@ const Cart = ({ show, handleClose })=> {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then( (response)=> {
-            console.log(response)
-        })
+        .then( ()=> dispatchGet(setCart([])))
+        .then(()=>navigate('/purchase'))
         .catch( error => console.log(error) )
     }
 
@@ -54,6 +62,9 @@ const Cart = ({ show, handleClose })=> {
             }
             {
                 cart.length !== 0 && <Button onClick={ ()=> checkout(cart) }>Checkout</Button>
+            }
+            {
+                cart.length === 0 && <h2>No hay productos seleccionados</h2>
             }
             
             </Offcanvas.Body>
