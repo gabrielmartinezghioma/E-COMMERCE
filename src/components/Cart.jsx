@@ -1,4 +1,4 @@
-import {Offcanvas, Button } from 'react-bootstrap'
+import {Offcanvas, Button, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { thunkCartGet } from '../store/slices/cart.slice'
 import { useEffect, useState } from 'react'
@@ -9,6 +9,8 @@ const Cart = ({ show, handleClose })=> {
     const dispatch = useDispatch()
     const cart = useSelector(state =>state.cart)
     const [render, setRender] = useState(false)
+    let total = 0
+    const arrayTotal = []
 
     useEffect(() => {
       dispatch(thunkCartGet())
@@ -37,25 +39,55 @@ const Cart = ({ show, handleClose })=> {
         })
         .catch( error => console.log(error) )
     }
-
+    const totalShopping = cart?.price?.map((productPrice, index)=>
+    {    
+        total += parseInt(productPrice)  
+        
+    })
+    
+    
+    
     return(
         <Offcanvas show={show} onHide={handleClose} placement={"end"}>
             <Offcanvas.Header closeButton>
-            <Offcanvas.Title>Cart</Offcanvas.Title>
+            <Offcanvas.Title>Shopping cart</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-            {
-                cart.map((element, index)=>{
-                    return <li key={index}>{ element.title }</li>
-                })
-            }
-            {
+
+                {/* Cada producto seleccionado */}
+            
+                <Card className='articleSelect' style={{height: '500px', width:'280px'}}>
+                  {  
+                    cart.map((element, index)=>{                
+                    return (
+                        <Card.Body key={index}>
+                        <div className='articles'>
+                            <Card.Title className='title'>{element.title}</Card.Title>
+                            <button><i className="fa-solid fa-trash"></i></button>
+                        </div>
+                        <div>
+                            <Card.Text> <span>Total:</span> {element.price}</Card.Text>
+                        </div>
+                        </Card.Body>         
+                    )
+                    })
+                  }
+                  <Card.Footer>
+                {/* total de todos los productos */}
+                <div>
+                    <Card.Title>Total:</Card.Title>
+                    <Card.Text> {totalShopping} </Card.Text>
+
+                </div>
+            
+            {/* {
                 cart.length !== 0 && <Button onClick={ deleteCart }>Delete All</Button>
-            }
+            } */}
             {
                 cart.length !== 0 && <Button onClick={ ()=> checkout(cart) }>Checkout</Button>
             }
-            
+                    </Card.Footer>
+            </Card>
             </Offcanvas.Body>
         </Offcanvas>
     )

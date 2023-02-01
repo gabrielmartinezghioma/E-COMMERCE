@@ -40,7 +40,7 @@ const Home = () => {
   return (
     <div className='content-home'>
       <h1>Home</h1>
-{/* Search */}
+        {/* Search */}
       <Col className="search">
           <Form 
           onSubmit={ (e) => searchProduct(e.target[0].value)}>
@@ -80,7 +80,7 @@ const Home = () => {
         </Accordion.Item>
       </Accordion>
         </div> 
-{/* Dezpliegue de las categorias */}
+        {/* Dezpliegue de las categorias */}
       <div className='filtersCategorie'>
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0" className='border-0'>
