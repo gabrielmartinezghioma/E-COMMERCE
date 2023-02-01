@@ -16,45 +16,45 @@ function App() {
   const isLoading = useSelector(state => state.isLoading)
 
   return (
-    
-       <HashRouter>
 
-        { isLoading && <Loader/>}
-         <NavBa/>
-         <Container className='my-5'>
-       
+    <HashRouter>
+
+      {isLoading && <Loader />}
+      <NavBa />
+      <Container className='my-5'>
+
 
         <Routes>
 
-          <Route 
-          path='/'
-          element={<Home/>}
+          <Route
+            path='/'
+            element={<Home />}
           />
-          <Route 
-          path='/products/:id'
-          element={<ProductDetail/>}
+          <Route
+            path='/products/:id'
+            element={<ProductDetail />}
           />
-          <Route 
-          path='/login'
-          element={<Login/>}
+          <Route
+            path='/login'
+            element={<Login />}
           />
-          <Route 
-          path='/purchase'
-          element={<Purchases/>}
+          <Route
+            path='/purchase'
+            element={<Purchases />}
           />
-          <Route 
-          path='/register'
-          element={<Register/>}
+          <Route
+            path='/register'
+            element={<Register />}
           />
 
         </Routes>
 
-        </Container>
+      </Container>
 
-       
-      </HashRouter>
-      
-     
+
+    </HashRouter>
+
+
   )
 }
 
