@@ -33,11 +33,6 @@ const Cart = ({ show, handleClose })=> {
             }
         })
         .then( (response)=> {
-            if(response.status === 200){
-                setTimeout(()=>{
-                    deleteCart()
-                },5000)
-            }
             console.log(response)
         })
         .catch( error => console.log(error) )
