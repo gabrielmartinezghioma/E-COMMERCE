@@ -62,7 +62,7 @@ const ProductDetail = () => {
   const dispatchPostCart = useDispatch();
   const navigate = useNavigate();
   const dispatchGetCart = useDispatch(); // Depacho del carrito
-  const cart = useSelector(state =>state.cart) //LECTURA DEL CARRITO
+  // const cart = useSelector(state =>state.cart) //LECTURA DEL CARRITO
   // console.log(cart); //LECTURA DE CART , DE LA PETICION GET
 
   const handleSubmit = () => {
