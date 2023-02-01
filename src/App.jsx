@@ -23,7 +23,7 @@ function App() {
       {isLoading && <Loader />}
       <NavBa />
       <Container className='my-5'>
-  
+
         <Routes>
 
 
@@ -54,7 +54,7 @@ function App() {
       </Container>
 
 
-      <Footer/>
+      <Footer />
 
 
     </HashRouter>
