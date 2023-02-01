@@ -11,7 +11,8 @@ import Card from 'react-bootstrap/Card';
 // thunk
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsThunk } from '../store/slices/products.slice';
-import { thunkCartPost } from '../store/slices/cart.slice'
+import { thunkCartPost } from '../store/slices/cart.slice';
+import {thunkCartGet } from '../store/slices/cart.slice'
 
 
 const ProductDetail = () => {
@@ -59,21 +60,26 @@ const ProductDetail = () => {
 
   const [input, setInput] = useState(1);
   const dispatchPostCart = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatchGetCart = useDispatch(); // Depacho del carrito
+  const cart = useSelector(state =>state.cart) //LECTURA DEL CARRITO
+  // console.log(cart); LECTURA DE CART , DE LA PETICION GET
 
   const handleSubmit = () => {
 
-    if(localStorage.getItem('token')){
+    if (localStorage.getItem('token')) {
       const data = {
-       id : Number(id),
+        id: detail.id,
         quantity: input
-      } 
-        dispatchPostCart(thunkCartPost(data))
-    
-    }else{
+      }
+      dispatchPostCart(thunkCartPost(data));
+      dispatchGetCart(thunkCartGet()); //Cuando le das en el boton se hace la peticion get, solo para verificar que funciona correctamente. 
+
+    } else {
       navigate('/login')
     }
   }
+  
 
 
   return (

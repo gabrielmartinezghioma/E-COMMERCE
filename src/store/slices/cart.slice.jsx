@@ -37,7 +37,8 @@ export const thunkCartPost = (body) => (dispatch) => {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     })
-    .then(() => dispatch(thunkCartPost()))
+    // .then(() => dispatch(thunkCartPost()))
+    .then((resp)=>console.log(resp))
     .catch((resp) => console.log(resp))
     .finally(() => dispatch(setIsLoading(false)));
 }
