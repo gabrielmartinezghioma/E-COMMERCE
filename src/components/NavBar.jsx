@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
-// import Cart from './Cart';
+import Cart from './Cart';
 import { useState } from 'react';
 
 const NavBa = () => {
@@ -45,9 +45,9 @@ const NavBa = () => {
         </Nav>
         {
           user && `Welcome ${user}`
-        }
+        }s
       </Navbar>
-      {/* <Cart show={show} handleClose={handleClose} ></Cart> */}
+      <Cart show={show} handleClose={handleClose} ></Cart>
 
       <section className='section-navbar'>
 
