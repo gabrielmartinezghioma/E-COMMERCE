@@ -326,11 +326,11 @@
 }
 
 .carousel-control-next {
-  right: -60px;
+  right: -1%;
 }
 
 .carousel-control-prev {
-  left: -60px;
+  left: -1%;
 }
 
 .carousel-control-next-icon {
