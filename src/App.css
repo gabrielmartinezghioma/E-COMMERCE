@@ -1,3 +1,43 @@
+/* Burguer-Botton */
+.hide-button{
+  display: none;
+}
+@media (max-width: 768px) {
+  .hide-button{
+    display: block;
+  }
+  .d-block{
+    display: none!important;
+  }
+  .col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-search-home{
+    min-width: 300px;
+  }
+  .d-flex{
+    justify-content: center;
+  }
+  .userWelcome{
+    display: none;
+  }
+ 
+}
+.icon-filter{
+  font-size: 25px;
+  color: whitesmoke;
+}
+.button-filter{
+  width: 80px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 /* navbar */
 
 .navbar-all {
@@ -1008,6 +1048,12 @@
 }
 
 /* purchase */
+
+
+.justify-content-center{
+  align-items: center;
+  height: 100vh;
+}
 .content-purchase {
   flex-direction: column;
   display: flex;

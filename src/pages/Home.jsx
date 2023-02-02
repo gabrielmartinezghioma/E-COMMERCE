@@ -8,6 +8,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Form from 'react-bootstrap/Form';
 import { setIsLoading } from '../store/slices/isLoading.slice';
 import { useForm } from "react-hook-form";
+import BurguerButton from '../components/BurguerButton';
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -65,6 +66,9 @@ const Home = () => {
             {/* <button type='submit'>Click</button>     */}
           </Form>
       </Col>
+      <div className='hide-button'>
+            <BurguerButton/>
+          </div>
 
       <div className='d-flex'>
       <Row>
