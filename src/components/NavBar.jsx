@@ -8,13 +8,20 @@ import Cart from './Cart';
 import { useState } from 'react';
 
 const NavBa = () => {
-
+  
+  const navigate = useNavigate()
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const handleShow = () => {
+    const token = localStorage.getItem('token');
+    if(token){
+      setShow(true)
+    }else{
+      navigate('/login')
+    }
+  }
 
   const user = localStorage.getItem('user')
-  const navigate = useNavigate()
 
   const logout = () => {
     localStorage.removeItem('token')

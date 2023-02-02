@@ -49,10 +49,6 @@ const Register = ()=> {
                         <Form.Label>Password</Form.Label>
                         <Form.Control {...register('password')} type="password" placeholder="Password"/>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="passretype">
-                        <Form.Label>Re-type Password</Form.Label>
-                        <Form.Control type="password" placeholder="Re-type Password"/>
-                    </Form.Group>
                 <Button variant="primary" type="submit" className='col-12'>
                     Register
                 </Button>

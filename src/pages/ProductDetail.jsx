@@ -97,7 +97,7 @@ const ProductDetail = () => {
           width: "6px"
         }}
         ></div>
-        <div style={{ fontWeight: 600, fontSize:'1.5rem' }}>{detail.title}</div>
+        <div style={{ fontWeight: 700}}>{detail.title}</div>
       </div>
 
       {/* main content */}
