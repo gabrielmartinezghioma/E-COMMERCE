@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-import AlertDismissibleExample from '../components/AlertError'
+import AlertDismissibleExample from '../components/Alert'
 import { useEffect } from 'react'
 
 const Login = () => {
@@ -73,6 +73,7 @@ const Login = () => {
         <AlertDismissibleExample
         isVisible={alert}
         dismiss={() => setAlert(false)}
+        msg={{msg: '¡Ha ocurrido un error!', color: 'danger'}}
         />
       </div>
      </div>

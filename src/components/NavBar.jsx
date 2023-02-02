@@ -6,27 +6,45 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Cart from './Cart';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setCart } from '../store/slices/cart.slice'
 
 const NavBa = () => {
-  
-  const navigate = useNavigate()
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
+
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const token = localStorage.getItem('token');
+
+
+
+  const purchase = () => {
+    if (token) {
+      
+      navigate('/purchase')
+    } else {
+      navigate('/login')
+    }
+  }
+
+
   const handleShow = () => {
-    const token = localStorage.getItem('token');
-    if(token){
+    if (token) {
       setShow(true)
-    }else{
+    } else {
       navigate('/login')
     }
   }
 
   const user = localStorage.getItem('user')
+  const dispatch = useDispatch();
+
 
   const logout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
     navigate('/')
+    dispatch(setCart([]))
   }
 
   return (
@@ -38,21 +56,21 @@ const NavBa = () => {
         <Nav className="me-auto content-detail-navbar">
           <section className='link-login'  >
             {
-              user ? <Nav.Link onClick={logout}>Logout</Nav.Link> : <Nav.Link as={Link} to="/login" className='login-navbar' ><i className='bx bx-user icon-user-navbar'></i></Nav.Link>
+              user ? <Nav.Link  className='purchase-navbar' onClick={logout}><i className="fa-solid fa-right-from-bracket icon-user-navbar "></i></Nav.Link> : <Nav.Link as={Link} to="/login" className='login-navbar' ><i className='bx bx-user icon-user-navbar'></i></Nav.Link>
             }
 
           </section>
           <section className='link-purchase'>
-            <Nav.Link className='purchase-navbar' as={Link} to="/purchase"  ><i className="fa-solid fa-box-archive purchase-icon"></i></Nav.Link>
+            <Nav.Link className='purchase-navbar' onClick={purchase} ><i className="fa-solid fa-box-archive purchase-icon"></i></Nav.Link>
           </section>
           <section className='link-car' >
             <Nav.Link className='car-navbar' onClick={handleShow} ><i className='bx bxs-cart icon-car-navbar'></i></Nav.Link>
           </section>
 
         </Nav>
-        {
-          user && `Welcome ${user}`
-        }
+        
+          <div className='userWelcome'>{user && `Welcome ${user}`}</div>
+        
       </Navbar>
       <Cart show={show} setShow={setShow} handleClose={handleClose}  ></Cart>
 

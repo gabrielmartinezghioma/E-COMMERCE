@@ -2,21 +2,38 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
-import AlertDismissibleExample from '../components/AlertError'
+import { useNavigate } from 'react-router-dom'
+import AlertSuccess from '../components/Alert'
 import { useState } from 'react'
 
 const Register = ()=> {
 
     const navigate = useNavigate()
     const [alert, setAlert] = useState(false)
-    const { register, handleSubmit } = useForm()
+    const [msg, setMsg] = useState({})
+    const { register, handleSubmit, formState: { errors } } = useForm()
 
     const onSubmit = (user)=>{
+
         user.role = 'admin'
         axios.post('https://e-commerce-api.academlo.tech/api/v1/users', user)
-            .then(response => console.log(response))
-            .catch(error => console.log(error))
+            .then(()=> {
+                setMsg({
+                    msg: 'Se ha registrado con éxito',
+                    color: 'success'
+                })
+                setAlert(true)
+                setTimeout(()=>{
+                    navigate("/login")
+                },3000)
+            })
+            .catch(error => {
+                setMsg({
+                    msg: error.response.data.message,
+                    color: 'danger'
+                })
+                setAlert(true)
+            })
         console.log(user)
     }
 
@@ -43,19 +60,22 @@ const Register = ()=> {
                     </Form.Group>
                     <Form.Group controlId="phone">
                         <Form.Label>Phone</Form.Label>
-                        <Form.Control {...register('phone')} type="number" placeholder="Phone"/>
+                        <Form.Control {...register('phone', { required: true, minLength: 10, maxLength: 10 })} type="number" placeholder="Phone"/>
+                        <small className='errors'> {errors.phone && 'Phone must be 10 digits'} </small>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control {...register('password')} type="password" placeholder="Password"/>
+                        <Form.Control {...register('password', { required: true, minLength: 8 })} type="password" placeholder="Password"/>
+                        <small className='errors'> {errors.password && 'Password must be 8 characters'} </small>
                     </Form.Group>
                 <Button variant="primary" type="submit" className='col-12'>
                     Register
                 </Button>
                 </Form>
-                <AlertDismissibleExample
-                isVisible={alert}
+                <AlertSuccess
+                isVisible={ alert }
                 dismiss={() => setAlert(false)}
+                msg={ msg }
                 />
             </div>
         </div>

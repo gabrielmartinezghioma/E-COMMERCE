@@ -28,3 +28,6 @@ h5,
 h6 {
   font-family: Yantramanav, sans-serif;
 }
+.errors {
+  color: var(--secondary--color);
+}
