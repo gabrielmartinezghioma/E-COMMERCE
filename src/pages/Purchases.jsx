@@ -57,31 +57,27 @@ const Purchases = () => {
       </div>
 
         {
-
           purchases.map((element, index)=> 
           
-          <li key={index}>
-            <ul className='ul-purchase'>
+          <ul key={index} className='ul-purchase'>
+            <li className='li-purchase'>
             {
               element.cart.products.map((item, i)=>
-               <li key={i} className='li-purchase'>
-                <div className='content-detail-purchase'>
-
-                  <h2>{item.updatedAt}</h2>
-                  <h3>
-                  { item.brand }
-                  </h3>
-                  <h3>{item.price}</h3>
-
-                </div>
-               
-                
-                </li>)
+              <ul className='ul-map-purchase'>
+                <li key={i} className='list-map-purchase'>
+                  <span className='h4-details-purchase'>
+                    <h4>{item.title}</h4>
+                    <h4>{item.updatedAt}</h4>
+                    <h4>${item.price}</h4>
+                  </span>
+                </li>
+              </ul>)
             }
-            </ul>
-          
 
-          </li>)
+            
+            </li>
+
+          </ul>)
         }
     </div>
   );
