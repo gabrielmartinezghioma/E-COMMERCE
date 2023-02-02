@@ -12,9 +12,9 @@
 
 ## Autores 
 
-**MERCEDES BASTARDO** 
-**CARLOS BERMUDEX GARCÍA**  
-**JOYNER MIRANDA** 
+**MERCEDES BASTARDO** ,
+**CARLOS BERMUDEX GARCÍA**  ,
+**JOYNER MIRANDA** ,
 **GABRIEL ALEJANDRO MARTINEZ** 
 
 [Linkedin](https://www.linkedin.com/in/mercedes-bastardo/)
@@ -40,12 +40,16 @@
 	Este proyecto necesita instalación de node modules. Para ello haga npm install o simplemte npm i 
 
 ## Contratación 
-	Si quieres contratarnos puedes escribirnos  a :
+	Si quieres contratarnos puedes escribirnos  a 
 
-**MERCEDES BASTARDO**  daybas1988@gmail.com
+**MERCEDES BASTARDO**  daybas1988@gmail.com 
+
 **CARLOS BERMUDEX GARCÍA** cbermudezg7@gmail.com
+
 **JOYNER MIRANDA**  migue1409.mg@gmail.com
+
 **GABRIEL MARTINEZ** gabrielghioma@gmail.com 
+
 
 ## Licencia
 
