@@ -7,18 +7,31 @@ import { useNavigate } from 'react-router-dom';
 import Cart from './Cart';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {setCart} from '../store/slices/cart.slice'
+import { setCart } from '../store/slices/cart.slice'
 
 const NavBa = () => {
-  
-  const navigate = useNavigate()
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
+
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const token = localStorage.getItem('token');
+
+
+
+  const purchase = () => {
+    if (token) {
+      
+      navigate('/purchase')
+    } else {
+      navigate('/login')
+    }
+  }
+
+
   const handleShow = () => {
-    const token = localStorage.getItem('token');
-    if(token){
+    if (token) {
       setShow(true)
-    }else{
+    } else {
       navigate('/login')
     }
   }
@@ -48,7 +61,7 @@ const NavBa = () => {
 
           </section>
           <section className='link-purchase'>
-            <Nav.Link className='purchase-navbar' as={Link} to="/purchase"  ><i className="fa-solid fa-box-archive purchase-icon"></i></Nav.Link>
+            <Nav.Link className='purchase-navbar' onClick={purchase} ><i className="fa-solid fa-box-archive purchase-icon"></i></Nav.Link>
           </section>
           <section className='link-car' >
             <Nav.Link className='car-navbar' onClick={handleShow} ><i className='bx bxs-cart icon-car-navbar'></i></Nav.Link>
