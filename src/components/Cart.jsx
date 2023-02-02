@@ -3,18 +3,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { thunkCartGet } from '../store/slices/cart.slice'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { setCart } from '../store/slices/cart.slice'
 
-const Cart = ({ show, handleClose })=> {
+const Cart = ({ show, handleClose,setShow })=> {
   
     const dispatch = useDispatch()
+    const dispatchGet = useDispatch()
     const cart = useSelector(state =>state.cart)
-    const [render, setRender] = useState(false)
     let total = 0
-    const arrayTotal = []
+    const navigate = useNavigate()
+    
 
     useEffect(() => {
       dispatch(thunkCartGet())
-    }, [show, render])
+    }, [show])
 
     const deleteCart = ()=>{
         cart.map((element)=>{
@@ -23,7 +26,7 @@ const Cart = ({ show, handleClose })=> {
                   Authorization: `Bearer ${localStorage.getItem('token')}`
                 }
               })
-            .then(()=> setRender(!render))
+            .then(()=>  dispatchGet(setCart([])))
             .catch(error => console.log(error) )
         })
     }
@@ -35,7 +38,9 @@ const Cart = ({ show, handleClose })=> {
             }
         })
         .then( (response)=> {
-            console.log(response)
+            navigate('/purchase');
+            setShow(!show);
+            dispatchGet(setCart([]))
         })
         .catch( error => console.log(error) )
     }
