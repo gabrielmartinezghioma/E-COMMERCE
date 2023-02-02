@@ -1,12 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const Footer = () => {
   return (
     <div className='all-footer'>
 
-      <section className='section1-footer'>
+      <a className='section1-footer a-footer' href='https://www.academlo.com/'>
         <h3 className='title-footer'>© ACADEMLO 2023</h3>
-      </section>
+      </a>
       <section className='section-icon-footer'>
         <a className='a-footer' href="https://www.instagram.com/accounts/login/">
           <i className="fa-brands fa-instagram icon-ig"></i>

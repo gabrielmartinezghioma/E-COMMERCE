@@ -51,8 +51,6 @@ export const thunkCartGet = () => async (dispatch) => {
 }
 
 
-
-
 export const thunkCartPost = (body) => (dispatch) => {
   dispatch(setIsLoading(true));
   return axios
