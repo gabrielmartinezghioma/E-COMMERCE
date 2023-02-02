@@ -88,7 +88,7 @@ const ProductDetail = () => {
 
       {/* title section */}
       <div className="flex justify-content-start  align-items-center mb-5">
-        <Card.Link as={Link} to='/' style={{ textDecoration: 'none' }}>  Home  </Card.Link>
+        
         <div style={{
           background: "var(--secondary--color)",
           borderRadius: "50%",
@@ -97,14 +97,14 @@ const ProductDetail = () => {
           width: "6px"
         }}
         ></div>
-        <div style={{ fontWeight: 600 }}>{detail.title}</div>
+        <div style={{ fontWeight: 600, fontSize:'1.5rem' }}>{detail.title}</div>
       </div>
 
       {/* main content */}
       <Row className='d-flex justify-content-between align-items-center' >
 
         {/* carrousel */}
-        <Col xs={12} lg={4}  >
+        <Col xs={12} lg={4} className='colCarrousel'  >
           <Carousel activeIndex={activeIndex} onSelect={handleSelect} >
             {
               detail?.productImgs?.map((element, index) => (

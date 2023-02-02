@@ -314,6 +314,14 @@
 
 /* carousel detail */
 
+
+.colCarrousel{
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+
+
 .carousel-indicators {
   position: relative;
   display: none;
@@ -326,11 +334,11 @@
 }
 
 .carousel-control-next {
-  right: -1%;
+  right: -14%;
 }
 
 .carousel-control-prev {
-  left: -1%;
+  left: -14%;
 }
 
 .carousel-control-next-icon {
@@ -486,6 +494,11 @@
 {
   margin-top: 15%;
 }
+
+.content-details {
+  margin-top: 10%
+}
+
 /* don't use Z-index that have a value more to 99 */
 .loading{
   display: flex;
