@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Cart from './Cart';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {setCart} from '../store/slices/cart.slice'
 
 const NavBa = () => {
   
@@ -22,11 +24,14 @@ const NavBa = () => {
   }
 
   const user = localStorage.getItem('user')
+  const dispatch = useDispatch();
+
 
   const logout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('user')
     navigate('/')
+    dispatch(setCart([]))
   }
 
   return (
