@@ -37,13 +37,13 @@ export const thunkCartGet = () => async (dispatch) => {
         }
       })
 
-   if (response.status === 200) {
+    if (response.status === 200) {
       dispatch(setCart(response.data.data.cart.products))
     }
   } catch (response) {
     if (response.status === 404) {
       dispatch(setCart([]))
-    } else{
+    } else {
 
       console.error(response)
     }
