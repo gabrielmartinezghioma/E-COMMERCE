@@ -12,21 +12,16 @@
 
 ## Autores 
 
-**MERCEDES BASTARDO** ,
-**CARLOS BERMUDEX GARCÍA**  ,
-**JOYNER MIRANDA** ,
-**GABRIEL ALEJANDRO MARTINEZ** 
-
-[Linkedin](https://www.linkedin.com/in/mercedes-bastardo/)
+ **MERCEDES BASTARDO**, [Linkedin](https://www.linkedin.com/in/mercedes-bastardo/)
 
 
-[Linkedin](https://www.linkedin.com/in/carlosbermudezgarcia/)
+**CARLOS BERMUDEX GARCÍA**, [Linkedin](https://www.linkedin.com/in/carlosbermudezgarcia/)
 
 
-[Linkedin](https://www.linkedin.com/in/joyner-miranda-16a2bb24b/)
+**JOYNER MIRANDA**, [Linkedin](https://www.linkedin.com/in/joyner-miranda-16a2bb24b/)
 
 
-[Linkedin](https://www.linkedin.com/in/gabrielmartinezghioma/)
+**GABRIEL ALEJANDRO MARTINEZ**, [Linkedin](https://www.linkedin.com/in/gabrielmartinezghioma/)
 
 
 
