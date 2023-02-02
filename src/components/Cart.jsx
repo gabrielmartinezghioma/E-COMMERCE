@@ -32,6 +32,15 @@ const Cart = ({ show, handleClose,setShow })=> {
     }
 
 
+
+    const dataUser =      {
+        "street": "Green St. 1456",
+        "colony": "Southwest",
+        "zipCode": 12345,
+        "city": "USA",
+        "references": "Some references"
+    }
+
     const checkout = (purchases)=>{
         axios
             .post('https://e-commerce-api.academlo.tech/api/v1/purchases', purchases, {
@@ -97,7 +106,7 @@ const Cart = ({ show, handleClose,setShow })=> {
                 </div>
                 <div className='btn-cart'>
             {
-                cart.length !== 0 && <Button onClick={ ()=> checkout(cart) }>Checkout</Button>
+                cart.length !== 0 && <Button onClick={ ()=> checkout(dataUser) }>Checkout</Button>
             }
             {
                 cart.length !== 0 && <Button onClick={ ()=> deleteCart() }>All Delete</Button>
