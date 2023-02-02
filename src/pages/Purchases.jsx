@@ -11,9 +11,8 @@ import Table from 'react-bootstrap/Table';
 const Purchases = () => {
 
   const dispatch = useDispatch()
-
+  let total =0
   const [purchases, setPurchases] = useState([])
-  let total = 0
   useEffect(() => {
 
     dispatch(setIsLoading(true))
@@ -25,7 +24,6 @@ const Purchases = () => {
         }
       })
       .then((resp) =>{
-        console.log(resp.data.data.purchases)
         setPurchases(resp.data.data.purchases)}) //ver con cuidado la respuesta
       .catch((resp) => console.log(resp))
       .finally(() => dispatch(setIsLoading(false)))
@@ -67,7 +65,9 @@ const Purchases = () => {
 
             <tbody className='body'>
             {
-                purchases?.map((element, index)=> 
+                purchases?.map((element, index)=> {
+                  total = 0
+                  return ( 
                 <tr key={index}>
                 <td>{index}</td>
                 <td>{element?.updatedAt.slice(0,10)}</td>
@@ -85,7 +85,7 @@ const Purchases = () => {
                   </td>
                 <td className='totalPurchases'>{`$ ${total.toFixed(2)}`}</td>
               </tr>  
-              )}
+                )})}
             </tbody>
           </Table>        
     </div>
