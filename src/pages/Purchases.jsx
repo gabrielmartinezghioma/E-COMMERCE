@@ -4,6 +4,7 @@ import { setIsLoading } from '../store/slices/isLoading.slice';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
+import Table from 'react-bootstrap/Table';
 
 
 
@@ -12,7 +13,7 @@ const Purchases = () => {
   const dispatch = useDispatch()
 
   const [purchases, setPurchases] = useState([])
-
+  let total = 0
   useEffect(() => {
 
     dispatch(setIsLoading(true))
@@ -32,8 +33,8 @@ const Purchases = () => {
   
 
   return (
-    <div className='content-purchase'
-    >
+    <div className='content-purchase'>
+
       <section className='section-name-purchase'>
         <Link  to={"/"}
         style= {{
@@ -51,33 +52,42 @@ const Purchases = () => {
         <h4>Purchases</h4>
       </section>
       <div>
-
         <h3 className='my-purchase'>My Purchase</h3>
-
       </div>
 
-        {
-          purchases?.map((element, index)=> 
-          
-          <ul key={index} className='ul-purchase'>
-            <li className='li-purchase'>
-            {
-              element?.cart?.products?.map((item, index)=>
-              <ul  key={index} className='ul-map-purchase'>
-                <li className='list-map-purchase'>
-                  <span className='h4-details-purchase'>
-                    <h4>{item?.title}</h4>
-                    <h4>{item?.updatedAt}</h4>
-                    <h4>${item?.price}</h4>
-                  </span>
-                </li>
-              </ul>)
-            }
-            
-            </li>
+      <Table striped bordered hover>
+            <thead className='head'>
+              <tr>
+                <th>#</th>
+                <th>Of date purchases</th>
+                <th>Details</th>
+                <th>Total</th>
+              </tr>
+            </thead>
 
-          </ul>)
-        }
+            <tbody className='body'>
+            {
+                purchases?.map((element, index)=> 
+                <tr key={index}>
+                <td>{index}</td>
+                <td>{element?.updatedAt.slice(0,10)}</td>
+                <td>
+                  {
+                        element?.cart?.products?.map((product, i) => {
+                          total += parseInt(product?.price)
+                          return (
+                        <tr key={i} className='detailsProduct'>
+                            <td>{`✔ ${product?.title}`}</td>
+                            <td>{`$ ${product?.price}`}</td>
+                        </tr> )     
+                        })
+                  }
+                  </td>
+                <td className='totalPurchases'>{`$ ${total.toFixed(2)}`}</td>
+              </tr>  
+              )}
+            </tbody>
+          </Table>        
     </div>
   );
 };
