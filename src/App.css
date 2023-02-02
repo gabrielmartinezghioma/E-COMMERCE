@@ -1,5 +1,4 @@
 /* navbar */
-
 .navbar-all{
   background-color: black;
   z-index: 90;
@@ -894,6 +893,7 @@
   flex-direction: column;
   display: flex;
   align-items: flex-start;
+  height: 100vh;
 }
 .section-name-purchase{
   display: flex;
