@@ -16,7 +16,7 @@ const BurguerButton = () => {
   return (
     <>
       <Button variant="primary" className='button-filter' onClick={handleShow}>
-      <i className='bx bx-filter-alt icon-filter'></i>
+        <i className='bx bx-filter-alt icon-filter'></i>
       </Button>
       {/* icon-filter */}
 
@@ -25,10 +25,10 @@ const BurguerButton = () => {
           <Offcanvas.Title>E-commerce filters</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-            <Filters/>
+          <Filters />
         </Offcanvas.Body>
       </Offcanvas>
-      
+
 
 
 

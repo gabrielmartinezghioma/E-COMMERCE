@@ -11,8 +11,8 @@ function AlertDismissibleExample({ isVisible, dismiss, color, msg }) {
 
   if (show) {
     return (
-      <Alert variant={ msg.color } onClose={() => dismiss()} dismissible>
-        <Alert.Heading>{ msg.msg }</Alert.Heading>
+      <Alert variant={msg.color} onClose={() => dismiss()} dismissible>
+        <Alert.Heading>{msg.msg}</Alert.Heading>
       </Alert>
     );
   }

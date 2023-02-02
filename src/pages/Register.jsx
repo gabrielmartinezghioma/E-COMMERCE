@@ -6,26 +6,26 @@ import { useNavigate } from 'react-router-dom'
 import AlertSuccess from '../components/Alert'
 import { useState } from 'react'
 
-const Register = ()=> {
+const Register = () => {
 
     const navigate = useNavigate()
     const [alert, setAlert] = useState(false)
     const [msg, setMsg] = useState({})
     const { register, handleSubmit, formState: { errors } } = useForm()
 
-    const onSubmit = (user)=>{
+    const onSubmit = (user) => {
 
         user.role = 'admin'
         axios.post('https://e-commerce-api.academlo.tech/api/v1/users', user)
-            .then(()=> {
+            .then(() => {
                 setMsg({
                     msg: 'Se ha registrado con éxito',
                     color: 'success'
                 })
                 setAlert(true)
-                setTimeout(()=>{
+                setTimeout(() => {
                     navigate("/login")
-                },3000)
+                }, 3000)
             })
             .catch(error => {
                 setMsg({
@@ -34,25 +34,24 @@ const Register = ()=> {
                 })
                 setAlert(true)
             })
-        console.log(user)
     }
 
-    return(
+    return (
         <div className='row d-flex justify-content-center'>
             <div className='col-sm-9 col-md-5 col-12'>
-                <Form onSubmit={ handleSubmit( onSubmit ) }>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group controlId="firstName">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control {...register('firstName')} type="text" placeholder="First Name"/>
+                        <Form.Control {...register('firstName')} type="text" placeholder="First Name" />
                     </Form.Group>
                     <Form.Group controlId="lastName">
                         <Form.Label>Last Name</Form.Label>
-                        <Form.Control {...register('lastName')} type="text" placeholder="Last Name"/>
+                        <Form.Control {...register('lastName')} type="text" placeholder="Last Name" />
                     </Form.Group>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email"
-                        {...register('email')}
+                            {...register('email')}
                         />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
@@ -60,22 +59,22 @@ const Register = ()=> {
                     </Form.Group>
                     <Form.Group controlId="phone">
                         <Form.Label>Phone</Form.Label>
-                        <Form.Control {...register('phone', { required: true, minLength: 10, maxLength: 10 })} type="number" placeholder="Phone"/>
+                        <Form.Control {...register('phone', { required: true, minLength: 10, maxLength: 10 })} type="number" placeholder="Phone" />
                         <small className='errors'> {errors.phone && 'Phone must be 10 digits'} </small>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control {...register('password', { required: true, minLength: 8 })} type="password" placeholder="Password"/>
+                        <Form.Control {...register('password', { required: true, minLength: 8 })} type="password" placeholder="Password" />
                         <small className='errors'> {errors.password && 'Password must be 8 characters'} </small>
                     </Form.Group>
-                <Button variant="primary" type="submit" className='col-12'>
-                    Register
-                </Button>
+                    <Button variant="primary" type="submit" className='col-12'>
+                        Register
+                    </Button>
                 </Form>
                 <AlertSuccess
-                isVisible={ alert }
-                dismiss={() => setAlert(false)}
-                msg={ msg }
+                    isVisible={alert}
+                    dismiss={() => setAlert(false)}
+                    msg={msg}
                 />
             </div>
         </div>

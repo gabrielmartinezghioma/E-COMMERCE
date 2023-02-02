@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 
-
 const User = () => {
 
   const getDataUser = ()=>{
@@ -11,11 +10,9 @@ const User = () => {
     .catch(error => console.log(error) )
 }
 
-
 useEffect(()=>{
   getDataUser()
 },[])
-
 
   return (
     <div>

@@ -12,71 +12,70 @@ const Login = () => {
   const token = localStorage.getItem('token')
 
   useEffect(() => {
-    if(user && token){
+    if (user && token) {
       navigate('/')
-    } 
+    }
   }, [])
 
 
   const [email, setEmail] = useState("")
-  const [password, setPassword]= useState("")
+  const [password, setPassword] = useState("")
   const [alert, setAlert] = useState(false)
   const navigate = useNavigate()
 
-  const handleSubmit =(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-  const data = {
-    email: email,
-    password: password
+    const data = {
+      email: email,
+      password: password
+    }
+
+    axios.post(`https://e-commerce-api.academlo.tech/api/v1/users/login`, data)
+      .then(resp => {
+        localStorage.setItem('token', resp.data.data.token)
+        localStorage.setItem('user', resp.data.data.user.firstName)
+        navigate("/")
+      })
+      .catch(error => {
+        console.log(error)
+        setAlert(true)
+      })
+
   }
-
-  axios.post(`https://e-commerce-api.academlo.tech/api/v1/users/login`, data)
-  .then(resp => {
-    console.log(resp)
-    localStorage.setItem('token', resp.data.data.token)
-    localStorage.setItem('user', resp.data.data.user.firstName)
-    navigate("/")
-  })
-  .catch(error =>{
-    console.log(error)
-    setAlert(true)
-  })
-
-}
 
   return (
     <div className='row d-flex justify-content-center'>
       <div className='col-sm-9 col-md-5 col-12'>
-      <Form onSubmit={(e) => handleSubmit(e)}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email"
-               onChange={(e)=> setEmail(e.target.value)}
-              />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password"
-                onChange={(e)=> setPassword(e.target.value)} />
-            </Form.Group>
-            <Form.Text id="passwordHelpBlock" muted>
-              Don´t have an account yet? <Link to={'/register'} >Register</Link>
+        <Form onSubmit={(e) => handleSubmit(e)}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
             </Form.Text>
-           <Button variant="primary" type="submit" className='col-12'>
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)} />
+          </Form.Group>
+          <Form.Text id="passwordHelpBlock" muted>
+            Don´t have an account yet? <Link to={'/register'} >Register</Link>
+          </Form.Text>
+          <Button variant="primary" type="submit" className='col-12'>
             Log In
           </Button>
         </Form>
         <AlertDismissibleExample
-        isVisible={alert}
-        dismiss={() => setAlert(false)}
-        msg={{msg: '¡Ha ocurrido un error!', color: 'danger'}}
+          isVisible={alert}
+          dismiss={() => setAlert(false)}
+          msg={{ msg: '¡Ha ocurrido un error!', color: 'danger' }}
         />
       </div>
-     </div>
+    </div>
   )
 }
 export default Login
