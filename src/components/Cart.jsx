@@ -30,6 +30,8 @@ const Cart = ({ show, handleClose,setShow })=> {
             .catch(error => console.log(error) )
         })
     }
+
+
     const checkout = (purchases)=>{
         axios
             .post('https://e-commerce-api.academlo.tech/api/v1/purchases', purchases, {
@@ -37,7 +39,7 @@ const Cart = ({ show, handleClose,setShow })=> {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then( (response)=> {
+        .then( ()=> {
             navigate('/purchase');
             setShow(!show);
             dispatchGet(setCart([]))
@@ -48,6 +50,18 @@ const Cart = ({ show, handleClose,setShow })=> {
     // aca se suman los totales del carrito
     let totalShopping = cart.map(product => (parseInt(product.price)))
     totalShopping.map(num => total+=num)
+
+
+
+    const deleteElement = (elementId)=>{
+        axios.delete(`https://e-commerce-api.academlo.tech/api/v1/cart/${elementId}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+        .then(()=>  dispatch(thunkCartGet()))
+        .catch(error => console.log(error) )
+    }
     
     
     return(
@@ -65,7 +79,7 @@ const Cart = ({ show, handleClose,setShow })=> {
                         <Card.Body key={index}>
                         <div className='articles'>
                             <Card.Title className='title'>{element.title}</Card.Title>
-                            <button><i className="fa-solid fa-trash"></i></button>
+                            <button onClick={()=>deleteElement(element.id)} ><i className="fa-solid fa-trash"></i></button>
                         </div>
                         <div className='total'>
                             <Card.Text> <span>Total:</span> {element.price}</Card.Text>
