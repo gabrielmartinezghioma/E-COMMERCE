@@ -45,7 +45,7 @@ const NavBa = () => {
         </Nav>
         {
           user && `Welcome ${user}`
-        }s
+        }
       </Navbar>
       <Cart show={show} setShow={setShow} handleClose={handleClose}  ></Cart>
 
