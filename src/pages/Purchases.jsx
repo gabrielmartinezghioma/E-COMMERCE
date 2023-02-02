@@ -73,7 +73,6 @@ const Purchases = () => {
                 </li>
               </ul>)
             }
-
             
             </li>
 
