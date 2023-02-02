@@ -47,7 +47,7 @@ const NavBa = () => {
           user && `Welcome ${user}`
         }s
       </Navbar>
-      <Cart show={show} handleClose={handleClose} ></Cart>
+      <Cart show={show} setShow={setShow} handleClose={handleClose}  ></Cart>
 
       <section className='section-navbar'>
 

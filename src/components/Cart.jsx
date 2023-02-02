@@ -39,12 +39,10 @@ const Cart = ({ show, handleClose })=> {
         })
         .catch( error => console.log(error) )
     }
-    const totalShopping = cart?.price?.map((productPrice, index)=>
-    {    
-        total += parseInt(productPrice)  
-        
-    })
     
+    // aca se suman los totales del carrito
+    let totalShopping = cart.map(product => (parseInt(product.price)))
+    totalShopping.map(num => total+=num)
     
     
     return(
@@ -52,11 +50,10 @@ const Cart = ({ show, handleClose })=> {
             <Offcanvas.Header closeButton>
             <Offcanvas.Title>Shopping cart</Offcanvas.Title>
             </Offcanvas.Header>
-            <Offcanvas.Body>
-
+            <Offcanvas.Body >
                 {/* Cada producto seleccionado */}
-            
-                <Card className='articleSelect' style={{height: '500px', width:'280px'}}>
+                <Card className='articleSelect'>
+                    <div className='body'>
                   {  
                     cart.map((element, index)=>{                
                     return (
@@ -65,29 +62,30 @@ const Cart = ({ show, handleClose })=> {
                             <Card.Title className='title'>{element.title}</Card.Title>
                             <button><i className="fa-solid fa-trash"></i></button>
                         </div>
-                        <div>
+                        <div className='total'>
                             <Card.Text> <span>Total:</span> {element.price}</Card.Text>
                         </div>
                         </Card.Body>         
                     )
                     })
                   }
+                  </div>
                   <Card.Footer>
                 {/* total de todos los productos */}
-                <div>
+                <div className='totalShopping'>
                     <Card.Title>Total:</Card.Title>
-                    <Card.Text> {totalShopping} </Card.Text>
-
+                    <Card.Text> {`$${total.toFixed(2)}`} </Card.Text>
                 </div>
-            
-            {/* {
-                cart.length !== 0 && <Button onClick={ deleteCart }>Delete All</Button>
-            } */}
+                <div className='btn-cart'>
             {
                 cart.length !== 0 && <Button onClick={ ()=> checkout(cart) }>Checkout</Button>
             }
+            {
+                cart.length !== 0 && <Button onClick={ ()=> deleteCart() }>All Delete</Button>
+            }
+            </div>
                     </Card.Footer>
-            </Card>
+                </Card>
             </Offcanvas.Body>
         </Offcanvas>
     )
