@@ -72,11 +72,13 @@ const Filters = () => {
           </Button>
           </Col>
         ))}
-        <Button 
-            style={{fontWeight: "normal"}}
-            variant="ligth" 
-            onClick={() => dispatch(getProductsThunk())}>All Products
-        </Button>
+        <Col>
+          <Button 
+              style={{fontWeight: "normal"}}
+              variant="ligth" 
+              onClick={() => dispatch(getProductsThunk())}>All Products
+          </Button>
+        </Col>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion> 
