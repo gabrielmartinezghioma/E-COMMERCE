@@ -48,11 +48,12 @@ const NavBa = () => {
   }
 
   return (
-    <>
+    <section className='navbar-container'>
       <Navbar className='navbar-all' variant="dark">
         <Container>
           <Navbar.Brand className='navbar-title' as={Link} to="/">E-commerce <i className='bx bxs-shopping-bags navbar-bags'></i></Navbar.Brand>
         </Container>
+         <span className='userWelcome'>{user && `Welcome ${user}`}</span>
         <Nav className="me-auto content-detail-navbar">
           <section className='link-login'  >
             {
@@ -69,8 +70,6 @@ const NavBa = () => {
 
         </Nav>
         
-          <div className='userWelcome'>{user && `Welcome ${user}`}</div>
-        
       </Navbar>
       <Cart show={show} setShow={setShow} handleClose={handleClose}  ></Cart>
 
@@ -78,7 +77,7 @@ const NavBa = () => {
 
       </section>
 
-    </>
+    </section>
   )
 }
 

@@ -4,7 +4,6 @@
   --tertiary--color: #dcd9d9;
   --text--gray: #ababab;
   --text--color: #515151;
-
 }
 
 * {
@@ -19,6 +18,12 @@ body {
   color: var(--text--color);
   font-family: Yantramanav, sans-serif;
   font-size: 1rem;
+}
+#root {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
 }
 
 h1,
