@@ -69,7 +69,7 @@ const Purchases = () => {
                   total = 0
                   return ( 
                 <tr key={index}>
-                <td>{index}</td>
+                <td>{index +1}</td>
                 <td>{element?.updatedAt.slice(0,10)}</td>
                 <td>
                   {
