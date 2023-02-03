@@ -1085,3 +1085,7 @@
 .totalPurchases {
   text-align: end;
 }
+.inexistent {
+  font-size: 15px;
+  color: var(--secondary--color);
+}

@@ -106,7 +106,7 @@ const Cart = ({ show, handleClose, setShow }) => {
                                 cart.length !== 0 && <Button onClick={() => deleteCart()}>All Delete</Button>
                             }
                             {
-                                cart.length === 0 && <h2>No hay productos seleccionados</h2>
+                                cart.length === 0 && <h2 className='inexistent'>No hay productos seleccionados</h2>
                             }
                         </div>
                     </Card.Footer>
