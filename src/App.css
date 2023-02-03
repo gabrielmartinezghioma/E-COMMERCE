@@ -350,12 +350,14 @@
 }
 
 .search-button {
-  margin-left: 0
+  margin-left: 0;
+  background-color: var(--secondary--color);
+  width: 80px;
 }
 
 .search-icon {
   font-size: 25px;
-  color: grey;
+  color: aliceblue;
 }
 
 .filtersPrice {
