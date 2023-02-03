@@ -16,17 +16,14 @@ const NavBa = () => {
   const handleClose = () => setShow(false);
   const token = localStorage.getItem('token');
 
-
-
   const purchase = () => {
     if (token) {
-      
+
       navigate('/purchase')
     } else {
       navigate('/login')
     }
   }
-
 
   const handleShow = () => {
     if (token) {
@@ -57,7 +54,7 @@ const NavBa = () => {
         <Nav className="me-auto content-detail-navbar">
           <section className='link-login'  >
             {
-              user ? <Nav.Link  className='purchase-navbar' onClick={logout}><i className="fa-solid fa-right-from-bracket icon-user-navbar "></i></Nav.Link> : <Nav.Link as={Link} to="/login" className='login-navbar' ><i className='bx bx-user icon-user-navbar'></i></Nav.Link>
+              user ? <Nav.Link className='purchase-navbar' onClick={logout}><i className="fa-solid fa-right-from-bracket icon-user-navbar "></i></Nav.Link> : <Nav.Link as={Link} to="/login" className='login-navbar' ><i className='bx bx-user icon-user-navbar'></i></Nav.Link>
             }
 
           </section>
@@ -67,9 +64,7 @@ const NavBa = () => {
           <section className='link-car' >
             <Nav.Link className='car-navbar' onClick={handleShow} ><i className='bx bxs-cart icon-car-navbar'></i></Nav.Link>
           </section>
-
         </Nav>
-        
       </Navbar>
       <Cart show={show} setShow={setShow} handleClose={handleClose}  ></Cart>
 

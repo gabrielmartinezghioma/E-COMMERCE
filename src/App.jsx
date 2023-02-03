@@ -11,6 +11,7 @@ import Register from './pages/Register'
 import Footer from './components/Footer'
 
 import './App.css'
+import User from './pages/User'
 
 function App() {
 
@@ -25,8 +26,6 @@ function App() {
       <Container className='my-5'>
 
         <Routes>
-
-
 
           <Route
             path='/'
@@ -48,6 +47,11 @@ function App() {
             path='/register'
             element={<Register />}
           />
+
+          {/* <Route
+            path='/user'
+            element={<User />}
+          /> */}
 
         </Routes>
 

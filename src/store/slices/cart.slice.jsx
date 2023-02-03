@@ -26,8 +26,6 @@ export const cartProducts = createSlice({
 //     .finally(() => dispatch(setIsLoading(false)));
 // }
 
-
-
 export const thunkCartGet = () => async (dispatch) => {
   try {
     const response = await axios
@@ -49,7 +47,6 @@ export const thunkCartGet = () => async (dispatch) => {
     }
   }
 }
-
 
 export const thunkCartPost = (body) => (dispatch) => {
   dispatch(setIsLoading(true));
